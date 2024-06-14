@@ -4,12 +4,16 @@ import {
   getStory,
   generateStoryAndImage,
   synthesizeStory,
+  deleteStory,
 } from "../controllers/storyControllers.js";
 
 const router = express.Router();
 
 // Get single story
 router.get("/:id", getStory);
+
+// Delete a single story
+router.delete("/:id", ClerkExpressRequireAuth({}), deleteStory);
 
 // Get single story
 router.post("/synthesize", ClerkExpressRequireAuth({}), synthesizeStory);

@@ -45,6 +45,42 @@ export const getStory = async (
   }
 };
 
+// @desc   DELETE a single story
+// @route  DELETE /api/story
+// @auth   auth required
+export const deleteStory = async (
+  req: Request | any,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const storyId = req.params.id;
+    const story = await db.story.delete({
+      where: {
+        id: storyId,
+        authorId: req.auth.userId,
+      },
+    });
+
+    if (story) {
+      res.status(200).json({ success: true });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "Story not found!",
+      });
+    }
+  } catch (err: any) {
+    let statusCode = 500;
+    console.error(err.message, err.stack);
+
+    res.status(statusCode).json({
+      success: false,
+      message: "Error while retrieving Story.",
+    });
+  }
+};
+
 // @desc   Story speech
 // @route  POST /api/story/synthesize
 // @auth   auth required
