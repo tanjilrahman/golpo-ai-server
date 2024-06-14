@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String      @id @default(uuid())
+  email      String      @unique
+  name       String
+  imageUrl   String
+  stories    Story[]
+  characters Character[]
+}
+
+model Story {
+  id           String   @id @default(uuid())
+  chapters     Json
+  images       String[]
+  isPublic     Boolean  @default(true)
+  audioUrl     String?
+  language     String
+  storyType    String
+  readerAge    String
+  writingStyle String
+  isSuperStory Boolean
+  createdAt    DateTime @default(now())
+  author       User     @relation(fields: [authorId], references: [id])
+  authorId     String
+}
+
+model Character {
+  id        String   @id @default(uuid())
+  name      String
+  details   String
+  image     String
+  createdAt DateTime @default(now())
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+}
