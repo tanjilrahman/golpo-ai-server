@@ -5,8 +5,8 @@
   "main": "server.ts",
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "start": "nodemon --exec ts-node server",
+    "build": "tsx",
+    "start": "nodemon --exec tsx server",
     "dev": "nodemon --exec tsx watch --env-file=.env ./server.ts",
     "lint": "eslint .",
     "format": "prettier --write .",
