@@ -5,7 +5,7 @@ import { NextFunction, Request, Response } from "express";
 // @route  GET /api/story/all
 // @auth   allow any
 export const getAllStories = async (
-  req: Request | any,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {

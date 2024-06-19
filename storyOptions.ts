@@ -89,6 +89,11 @@ export const storyTypes = [
     value: "realistic-fiction",
     description: "Everyday life. relatable characters, emotions.",
   },
+  {
+    label: "Horror",
+    value: "horror",
+    description: "Chilling, suspenseful, thrilling scares.",
+  },
 ];
 
 export const writingStyles = [
@@ -131,5 +136,10 @@ export const writingStyles = [
     label: "Educational",
     value: "educational",
     description: "Informative, engaging, age-appropriate lessons.",
+  },
+  {
+    label: "Horror",
+    value: "horror",
+    description: "Intense, creepy, spine-tingling.",
   },
 ];
