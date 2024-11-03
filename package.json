@@ -5,7 +5,7 @@
   "main": "server.ts",
   "type": "module",
   "scripts": {
-    "build": "tsx",
+    "build": "tsup",
     "start": "nodemon --exec tsx server",
     "dev": "nodemon --exec tsx watch --env-file=.env ./server.ts",
     "lint": "eslint .",
@@ -35,7 +35,22 @@
     "@types/node": "^20.12.12",
     "nodemon": "^3.1.0",
     "prisma": "^5.14.0",
+    "tsup": "^8.3.5",
     "tsx": "^4.11.0",
     "typescript": "^5.4.5"
+  },
+  "tsup": {
+    "entry": [
+      "controllers/**/*.ts",
+      "db/**/*.ts",
+      "lib/**/*.ts",
+      "middleware/**/*.ts",
+      "routes/**/*.ts",
+      "!**/__tests__/**",
+      "!**/*.test.*"
+    ],
+    "splitting": false,
+    "sourcemap": true,
+    "clean": true
   }
 }
